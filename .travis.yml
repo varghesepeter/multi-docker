@@ -10,16 +10,16 @@ script:
   - docker run -e CI=true varghesepeter/react-test npm test -- --coverage
   
 after_success:
-  - docker build -t varghesepeter/multiDock-client  ./client
-  - docker build -t varghesepeter/multiDock-nginx   ./nginx
-  - docker build -t varghesepeter/multiDock-server  ./server
-  - docker build -t varghesepeter/multiDock-worker  ./worker
+  - docker build -t varghesepeter/multidock-client  ./client
+  - docker build -t varghesepeter/multidock-nginx   ./nginx
+  - docker build -t varghesepeter/multidock-server  ./server
+  - docker build -t varghesepeter/multidock-worker  ./worker
    
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID"  --password-stdin
     
 
-  - docker push varghesepeter/multiDock-client
-  - docker push varghesepeter/multiDock-nginx
-  - docker push varghesepeter/multiDock-server
-  - docker push varghesepeter/multiDock-worker 
+  - docker push varghesepeter/multidock-client
+  - docker push varghesepeter/multidock-nginx
+  - docker push varghesepeter/multidock-server
+  - docker push varghesepeter/multidock-worker 
