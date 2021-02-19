@@ -1,3 +1,4 @@
+language: generic
 sudo: required
 services:
   - docker
@@ -10,10 +11,10 @@ script:
   - docker run -e CI=true USERNAME/react-test npm test -- --coverage
   
   after_success:
-    - docker build -t varghesepeter/multiDock-client  ./client
-    - docker build -t varghesepeter/multiDock-nginx   ./nginx
-    - docker build -t varghesepeter/multiDock-server  ./server
-    - docker build -t varghesepeter/multiDock-worker  ./worker
+  - docker build -t varghesepeter/multiDock-client  ./client
+  - docker build -t varghesepeter/multiDock-nginx   ./nginx
+  - docker build -t varghesepeter/multiDock-server  ./server
+  - docker build -t varghesepeter/multiDock-worker  ./worker
     
   // Log into Docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID"  --password-stdin
