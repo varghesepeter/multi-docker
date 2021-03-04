@@ -1,0 +1,37 @@
+{
+  "AWSEBDockerrunVersion":2,
+  "containerDefinitions":[
+    {
+      "name":  "client",
+      "image": "varghesepeter/multidock-client",
+      "hostname": "client",
+      "essential":  false
+    },
+    {
+      "name":   "server",
+      "image":  "varghesepeter/multidock-server",
+      "hostname": "api",
+      "essential":false
+    },
+    {
+      "name":   "worker",
+      "image":  "varghesepeter/multidock/worker",
+      "hostname": "worker",
+      "essential":  false 
+    },
+    {
+      "name":"nginx",
+      "image":"varghesepeter/multidock-nginx",
+      "hostname":"nginx",
+      "essential":true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort":  80
+        }
+      ],
+      "links":  ["client","server"]
+    }
+  ]
+  
+}
